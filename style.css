@@ -28,7 +28,7 @@ html {
   font-size: 20px;
 }
 body {
-  background-color: rgb(238, 129, 129);
+  background-color: #FFB5C0;
 }
 
 .cssletter {
@@ -289,7 +289,7 @@ body {
 }
 
 .closeLetter::before {
-  content: "˚ʚ❤︎ɞ˚";
+  content: "ʚ❤︎Sara❤︎ɞ";
   font-size: 1.5rem !important;
   font-family: var(--letter-font);
   color: var(--letter-button-text);
@@ -309,7 +309,7 @@ body {
 .closeLetter:hover::before,
 .closeLetter:active::before,
 .closeLetter:focus::before {
-  content: "xXx";
+  content: "X";
 }
 
 /* Attribution */
@@ -329,4 +329,55 @@ footer {
 
 footer svg {
   width: 100px;
+}
+
+
+.Menu {
+    background: #FFB5C0; /* Gradiente suave de rosa claro para um tom mais intenso */
+    color: black; /* Texto branco para contraste */
+    font-family: 'Courier New', Courier, monospace; /* Fonte que lembra cartas de amor antigas */
+    border-radius: 15px; /* Cantos arredondados para dar suavidade */
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave para dar profundidade */
+    text-align: center; /* Centraliza o conteúdo */
+    margin: 20px auto;
+    max-width: 600px; /* Limita a largura da seção */
+}
+
+.Menu p {
+    font-size: 18px; /* Aumenta o tamanho da fonte para mais legibilidade */
+    line-height: 1.6; /* Aumenta o espaçamento entre as linhas para um visual mais suave */
+    letter-spacing: 0.5px; /* Aumenta o espaçamento entre as letras */
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.Menu p br {
+    margin: 5px 0;
+}
+
+.Menu p::before {
+    content: '💚'; /* Adiciona um coração antes da mensagem */
+    font-size: 30px;
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.Menu div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Efeito de animação no texto para dar um toque ainda mais romântico */
+.Menu p {
+    animation: pulsar 2s infinite ease-in-out;
+}
+
+@keyframes pulsar {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
 }
