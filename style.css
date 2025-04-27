@@ -335,7 +335,7 @@ footer svg {
 .Menu {
     background: #FFB5C0; /* Gradiente suave de rosa claro para um tom mais intenso */
     color: black; /* Texto branco para contraste */
-    font-family: 'Courier New', Courier, monospace; /* Fonte que lembra cartas de amor antigas */
+    font-family: 'Bradley Hand', cursive, 'Segoe Script', 'Comic Sans MS', sans-serif; /* Fonte que lembra cartas de amor antigas */
     border-radius: 15px; /* Cantos arredondados para dar suavidade */
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave para dar profundidade */
