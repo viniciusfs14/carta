@@ -147,6 +147,7 @@ body {
   top: 70%;
   transform: translate(-50%, -50%);
   cursor: pointer;
+  animation: pulsar 3s infinite ease-in-out;
 }
 
 @media (min-width: 650px) {
@@ -357,7 +358,7 @@ footer svg {
 }
 
 .Menu p::before {
-    content: '💚'; /* Adiciona um coração antes da mensagem */
+    content: 'Bom diaa meu bem 💚'; /* Adiciona um coração antes da mensagem */
     font-size: 30px;
     display: block;
     margin-bottom: 10px;
@@ -377,6 +378,12 @@ footer svg {
 }
 
 @keyframes pulsar {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+@keyframes pulsarEnvelope {
     0% { opacity: 0.7; }
     50% { opacity: 1; }
     100% { opacity: 0.7; }
