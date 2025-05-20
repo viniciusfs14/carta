@@ -24,36 +24,66 @@ shuffledThings.forEach((letter) => {
   if (!isOverflown(letter)) {
     letter.classList.add("center");
   }
+
   let offsetX, offsetY;
+
+  const startDrag = (x, y) => {
+    const rect = letter.getBoundingClientRect();
+    letter.style.position = "fixed";
+    letter.style.left = `${rect.left}px`;
+    letter.style.top = `${rect.top}px`;
+    offsetX = x - rect.left;
+    offsetY = y - rect.top;
+    letter.style.zIndex = zIndexCounter++;
+  };
+
+  const moveAt = (x, y) => {
+    letter.style.left = `${x - offsetX}px`;
+    letter.style.top = `${y - offsetY}px`;
+  };
+
+  const stopDrag = () => {
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("mouseup", onMouseUp);
+    document.removeEventListener("touchmove", onTouchMove);
+    document.removeEventListener("touchend", onTouchEnd);
+  };
+
+  const onMouseMove = (e) => moveAt(e.clientX, e.clientY);
+  const onMouseUp = () => stopDrag();
+
+  const onTouchMove = (e) => {
+    if (e.touches.length === 1) {
+      moveAt(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  };
+
+  const onTouchEnd = () => stopDrag();
+
   letter.addEventListener("mousedown", (e) => {
     if (e.target.tagName !== "BUTTON") {
-      const rect = e.target.getBoundingClientRect();
-
-      letter.style.position = "fixed";
-      letter.style.left = `${rect.left}px`;
-      letter.style.top = `${rect.top}px`;
-
-      offsetX = e.clientX - rect.left;
-      offsetY = e.clientY - rect.top;
-
-      letter.style.zIndex = zIndexCounter++;
-      const moveAt = (posX, posY) => {
-        letter.style.left = `${posX - offsetX}px`;
-        letter.style.top = `${posY - offsetY}px`;
-      };
-      const onMouseMove = (moveEvent) => moveAt(moveEvent.clientX, moveEvent.clientY);
-      const onMouseUp = () => {
-        document.removeEventListener("mousemove", onMouseMove);
-        document.removeEventListener("mouseup", onMouseUp);
-      };
+      e.preventDefault();
+      startDrag(e.clientX, e.clientY);
       document.addEventListener("mousemove", onMouseMove);
       document.addEventListener("mouseup", onMouseUp);
     }
   });
+
+  letter.addEventListener("touchstart", (e) => {
+    if (e.target.tagName !== "BUTTON" && e.touches.length === 1) {
+      startDrag(e.touches[0].clientX, e.touches[0].clientY);
+      document.addEventListener("touchmove", onTouchMove, { passive: false });
+      document.addEventListener("touchend", onTouchEnd);
+    }
+  });
 });
+
+// Botão para abrir envelope
 document.querySelector("#openEnvelope").addEventListener("click", () => {
   document.querySelector(".envelope").classList.add("active");
 });
+
+// Botões para fechar cartas
 const closeButtons = document.querySelectorAll(".closeLetter");
 closeButtons.forEach((button) => {
   button.addEventListener("click", (e) => {
